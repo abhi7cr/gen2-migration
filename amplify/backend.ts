@@ -18,11 +18,11 @@ cfnUserPool.policies = {
         temporaryPasswordValidityDays: 7
     }
 };
-// cfnUserPool.applyRemovalPolicy(RemovalPolicy.RETAIN, { applyToUpdateReplacePolicy: true })
+cfnUserPool.applyRemovalPolicy(RemovalPolicy.RETAIN, { applyToUpdateReplacePolicy: true })
 const cfnIdentityPool = backend.auth.resources.cfnResources.cfnIdentityPool;
 cfnIdentityPool.identityPoolName = "gen1auth595682ee_identitypool_595682ee__dev";
 cfnIdentityPool.allowUnauthenticatedIdentities = false;
-// cfnIdentityPool.applyRemovalPolicy(RemovalPolicy.RETAIN, { applyToUpdateReplacePolicy: true })
+cfnIdentityPool.applyRemovalPolicy(RemovalPolicy.RETAIN, { applyToUpdateReplacePolicy: true })
 const userPool = backend.auth.resources.userPool;
 userPool.addClient("NativeAppClient", {
     disableOAuth: true,
@@ -30,5 +30,6 @@ userPool.addClient("NativeAppClient", {
     userPoolClientName: "gen1au595682ee_app_client",
     enablePropagateAdditionalUserContextData: false,
     enableTokenRevocation: true,
-    refreshTokenValidity: Duration.days(30)
+    refreshTokenValidity: Duration.days(30),
+    generateSecret: false,
 })
