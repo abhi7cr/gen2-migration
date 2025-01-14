@@ -18,7 +18,7 @@ cfnUserPool.policies = {
         temporaryPasswordValidityDays: 7
     }
 };
-// cfnUserPool.applyRemovalPolicy(RemovalPolicy.RETAIN, { applyToUpdateReplacePolicy: true })
+cfnUserPool.applyRemovalPolicy(RemovalPolicy.RETAIN, { applyToUpdateReplacePolicy: true })
 const cfnIdentityPool = backend.auth.resources.cfnResources.cfnIdentityPool;
 cfnIdentityPool.identityPoolName = "gen2codegenc4e54632_identitypool_c4e54632__dev";
 cfnIdentityPool.allowUnauthenticatedIdentities = false;
